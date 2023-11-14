@@ -1,31 +1,25 @@
 import Team from '../js/team';
 
-test('method add works correctly', () => {
-  const team = new Team();
+let team;
+
+beforeEach(() => {
+  team = new Team();
+});
+it('should add character', () => {
   team.add('Bowman');
-
   const correct = ['Bowman'];
-
   expect(team.toArray()).toEqual(correct);
 });
 
-// test('method ', () => {
-//   const team = new Team();
-//   team.add('Bowman')
-//   team.add('Bowman')
-//   const correct = ["Bowman"]
+it('throws an error', () => {
+  team.add('Bowman');
+  expect(() => {
+    team.add('Bowman');
+  }).toThrow('Такой персонаж уже есть в команде');
+});
 
-//   expect(
-//     team
-
-//   ).toEqual(correct);
-// });
-
-test('method addAll works correctly', () => {
-  const team = new Team();
+it('adds all characters correctly', () => {
   team.addAll('Bowman', 'Zombie', 'Magician');
-
   const correct = ['Bowman', 'Zombie', 'Magician'];
-
   expect(team.toArray()).toEqual(correct);
 });
